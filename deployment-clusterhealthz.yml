@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -12,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        thing: service-clusterhealthz
+        service: clusterhealthz
     spec:
       affinity:
         nodeAffinity:
@@ -27,12 +28,30 @@ spec:
 {% endfor %}
       containers:
       - name: deployment-clusterhealthz
-        image: vdcregistry.bskyb.com/coreinfrastructure/clusterhealthz:0.0.15
+        image: registryurl/clusterhealthz:0.0.1
         env:
-          - name: "thing"
+          - service: "clusterhealthz"
             value: "service-clusterhealthz"
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
       imagePullSecrets:
       - name: cci-registry-token
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/scrape: 'true'
+  labels:
+    service: clusterhealthz
+    kubernetes.io/name: "Prometheus"
+  name: clusterhealthz
+spec:
+  selector:
+    service: clusterhealthz
+  ports:
+  - name: clusterhealthz
+    protocol: TCP
+    port: 5000
+    targetPort: 5000
