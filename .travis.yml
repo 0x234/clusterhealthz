@@ -3,9 +3,11 @@ python:
   - 3.6
   - nightly
 install:
-  - pip install -r requirements.txt
-  - pip install python-coveralls
+  - pip3 install -r requirements.txt
+  - pip3 install python-coveralls
+  - pip3 install pytest
+  - pip3 install pytest-cov 
 script:
-  - python clusterhealthz_tests.py
+  - pytest --cov=clusterhealthz clusterhealthz_tests.py
 after_success:  
   - coveralls 

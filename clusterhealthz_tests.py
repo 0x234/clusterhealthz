@@ -17,7 +17,7 @@
 import json
 import unittest
 
-from server import app, ClusterHealthz
+from clusterhealthz.server import app, ClusterHealthz
 
 
 class ClusterHealthzTests(unittest.TestCase):
