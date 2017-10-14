@@ -44,8 +44,6 @@ metadata:
   annotations:
     prometheus.io/scrape: 'true'
   labels:
-    service: clusterhealthz
-    kubernetes.io/name: "Prometheus"
   name: clusterhealthz
 spec:
   selector:
