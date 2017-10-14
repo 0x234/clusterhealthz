@@ -1,0 +1,38 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: deployment-clusterhealthz
+spec:
+  replicas: {{ groups['worker-nodes'] | length }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        thing: service-clusterhealthz
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: "kubernetes.io/hostname"
+                  operator: In
+                  values:
+{% for host in groups['worker-nodes'] %}
+                   - {{ host }}
+{% endfor %}
+      containers:
+      - name: deployment-clusterhealthz
+        image: vdcregistry.bskyb.com/coreinfrastructure/clusterhealthz:0.0.15
+        env:
+          - name: "thing"
+            value: "service-clusterhealthz"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+      imagePullSecrets:
+      - name: cci-registry-token
