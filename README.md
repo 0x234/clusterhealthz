@@ -43,7 +43,7 @@ cluster should not be serving traffic, you can add your own custom alerts to
 return an unhealthy status from the service. Add the alarm names you have
 configured into `config/clusterhealthz.conf`
 
-## How can I configure the alerts?
+## How can I contribute?
 
 PRs welcome. Please ensure your code is PEP8 compliant and tests are written
 for new methods.
