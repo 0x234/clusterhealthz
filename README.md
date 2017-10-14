@@ -37,13 +37,17 @@ configuration.
 This service requires Prometheus to be operational and will be return
 'unhealthy' if the service cannot be reached.
 
-## How can I extend this?
+## How can I configure the alerts?
 
-If there are other alert conditions that mean that a Kubernetes cluster should
-not be serving traffic, you can add your own custom alerts to return an
-unhealthy status from the service. Add the alarm names you have configured into
-`config/clusterhealthz.conf`
+If you want to configure your own alert conditions that mean that a Kubernetes
+cluster should not be serving traffic, you can add your own custom alerts to
+return an unhealthy status from the service. Add the alarm names you have
+configured into `config/clusterhealthz.conf`
 
+## How can I configure the alerts?
+
+PRs welcome. Please ensure your code is PEP8 compliant and tests are written
+for new methods.
 
 ## Testing
 
