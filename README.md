@@ -11,7 +11,7 @@ balancer to monitor. The purpose of this is two fold:
 services is in an operational state that is considered healthy. To do this,
 metric based alert logic is required to be configured in Prometheus that will
 raise an alarm in AlertManager if an event that is considered negative to
-luster operation occurs. This is not limited to the nodes that are carrying
+cluster operation occurs. This is not limited to the nodes that are carrying
 production workloads; any configurable alarm event can be used to determine
 cluster health.
 
