@@ -29,7 +29,8 @@ fsync() is < 25ms over p99", or "Return healthy if there is enough resource
 capacity on production nodes alarms". Building that logic into a load balancer
 monitor can become too complicated without the knowledge of events that are
 impacting the cluster. Updates to the monitoring configuration can be added to
-`/config` and the service can be sent a SIGHUP to reload the configuration.
+`clusterhealthz.conf` and the service can be sent a SIGHUP to reload the
+configuration.
 
 This service requires Prometheus to be operational and will be return
 'unhealthy' if the service cannot be reached.
