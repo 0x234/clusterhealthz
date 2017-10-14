@@ -1,5 +1,7 @@
 # ClusterHealthz
 
+[![Build Status](https://travis-ci.org/jbunce/clusterhealthz.svg?branch=master)](https://travis-ci.org/jbunce/clusterhealthz)
+
 
 ## What is ClusterHealthz?
 
