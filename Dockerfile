@@ -1,6 +1,6 @@
 FROM python:latest
 
-MAINTAINER Them yer beys from Cloud Core Infrastructure (CCI)
+MAINTAINER Jake Bunce github.com/jbunce
 
 COPY server.py /server.py
 
