@@ -28,7 +28,7 @@ a Kubernetes cluster there could be other considerations for allowing
 production traffic to reach a cluster. This service allows you to define
 Kubernetes specific statements such as: "Return healthy if the `etcd` nodes
 fsync() is < 25ms over p99", or "Return unhealthy if the number of HTTP 500s
-by x following a code push". Building that logic into a load balancer
+increases by x following a code push". Building that logic into a load balancer
 monitor can become too complicated without the knowledge of events that are
 impacting the cluster. The service can be sent a SIGHUP to reload the
 configuration which reads and loads the alert data names.
