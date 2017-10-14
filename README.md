@@ -25,7 +25,7 @@ configured to verify a socket can be opened or an HTTP 200 OK received. With
 a Kubernetes cluster there could be other considerations for allowing
 production traffic to reach a cluster. This service allows you to define
 Kubernetes specific statements such as: "Return healthy if the `etcd` nodes
-fsync() is > 25ms over p99", or "Return healthy if there is enough resource
+fsync() is < 25ms over p99", or "Return healthy if there is enough resource
 capacity on production nodes alarms". Building that logic into a load balancer
 monitor can become too complicated without the knowledge of events that are
 impacting the cluster. Updates to the monitoring configuration can be added to
